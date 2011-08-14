@@ -1,0 +1,48 @@
+--- libgnomeui-2.23.4/libgnomeui/gnome-ui-init.c	2008-08-15 00:25:52.000000000 +0200
++++ libgnomeui-2.23.4/libgnomeui/gnome-ui-init.c.lennart	2008-08-15 02:42:26.000000000 +0200
+@@ -103,6 +103,8 @@
+ /* Prototype for a private gnome_stock function */
+ G_GNUC_INTERNAL void _gnome_stock_icons_init (void);
+ 
++#if 0 
++
+ /* Whether to make noises when the user clicks a button, etc.  We cache it
+  * in a boolean rather than querying GConf every time.
+  */
+@@ -111,6 +113,8 @@
+ /* GConf client for monitoring the event sounds option */
+ static GConfClient *gconf_client = NULL;
+ 
++#endif
++
+ enum { ARG_DISABLE_CRASH_DIALOG=1, ARG_DISPLAY };
+ 
+ G_GNUC_INTERNAL void _gnome_ui_gettext_init (gboolean);
+@@ -389,6 +393,8 @@
+ 			     priv, (GDestroyNotify) libgnomeui_private_free);
+ }
+ 
++#if 0
++
+ static gboolean
+ relay_gnome_signal (GSignalInvocationHint *hint,
+               	     guint n_param_values,
+@@ -621,6 +627,7 @@
+                 initialize_gnome_signal_relay ();
+ 	 }
+ }
++#endif
+ 
+ static void
+ libgnomeui_post_args_parse(GnomeProgram *program, GnomeModuleInfo *mod_info)
+@@ -644,8 +651,9 @@
+ 	_gnome_ui_gettext_init (TRUE);
+ 
+         _gnome_stock_icons_init ();
+-
++#if 0
+         setup_event_listener ();
++#endif
+ }
+ 
+ static void
